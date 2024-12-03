@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafio Web: Verificação de Senhas</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url(imagens/Fundo.jpg),
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px red;
+        width: 300px;
+        text-align: center;
+      }
+
+      input[type="password"] {
+        padding: 10px;
+        font-size: 16px;
+        margin-top: 10px;
+        border: 2px solid yellow;
+        border-radius: 5px;
+        width: 80%;
+      }
+
+      button {
+        padding: 10px 15px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 80%;
+      }
+
+      button:hover {
+        background-color: #45a049;
+        margin-top: 10px;
+      }
+
+      .result {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+
+      .result.correct {
+        color: green;
+      }
+
+      .result.incorrect {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Verificador de Senhas</h1>
+    <div class="container">
+      <p>Digite a Senha numérica:</p>
+      <div>
+        <label for="pass">Senha (Mínimo 8 caracteres):</label>
+        <input type="password" id="pass" name="password" minlength="8" required />
+      </div>
+      <button onclick="checarsenha()">Verificar Senha</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      // Senha predefinida
+      const senhaPredefinida = "12345678";  // Alterar para a senha que você deseja
+
+      // Função que verifica se a senha corresponde à senha predefinida
+      function checarsenha() {
+        const senha = document.getElementById("pass").value;
+        const resultDiv = document.getElementById("result");
+
+        if (!senha) {
+          resultDiv.textContent = "Por favor, insira uma senha!";
+          resultDiv.className = "result incorrect";
+          return;
+        }
+
+        if (senha === senhaPredefinida) {
+          resultDiv.textContent = "Senha correta!";
+          resultDiv.className = "result correct";
+        } else {
+          resultDiv.textContent = "Senha incorreta!";
+          resultDiv.className = "result incorrect";
+        }
+      }
+    </script>
+  </body>
+</html>
